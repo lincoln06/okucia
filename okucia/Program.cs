@@ -18,10 +18,10 @@ namespace okucia
                 Console.WriteLine("1 - Uchylne\n2 - Rozwierne\n3 - Rozwierno - uchylne\n4 - Rozwierno - uchylne + rozwierne ze słupkiem ruchomym");
                 rodzaj = int.Parse(Console.ReadLine());
             }
-            Console.WriteLine("Minimalne wymiary to: 350x350 mm");
+            Console.WriteLine("Minimalne wymiary to: 350x450 mm");
             int szer = 300;
             int wys = 300;
-            while(szer<350 && wys<350)
+            while(szer<350 || wys<450)
             {
                 Console.Clear();
                 Console.WriteLine("Podaj szerokość skrzydła w mm");
@@ -50,10 +50,10 @@ namespace okucia
                     Uchyl(k, x, y);
                     break;
                 case 2:
-                    ru(k, x, y);
+                    roz(k, x, y);
                     break;
                 case 3:
-                    roz(k, x, y);
+                    ru(k, x, y);
                     break;
                 case 4:
                     ruch(k, x, y);
@@ -67,7 +67,40 @@ namespace okucia
         }
         static void ru(int k,int x, int y)
         {
-            Console.WriteLine($"Wybrałeś okno rozwierno - uchylne o klasie odporności {k} i wymiarach {x}x{y}mm.");
+            float pop1 = 0;
+            float pop3 = 0;
+            string klasa = "";
+            switch(k)
+            {
+                case 1:
+                    klasa = "Standard";
+                    pop1 = y / 2 - 195;
+                    pop3 = x / 2 - 133;
+                    Console.WriteLine("Potrzebne elementy:");
+                    Console.WriteLine("Ryglowanie centralne\nNarożnik RU\nRozwórka");
+                    Console.WriteLine($"Popychacz - Zamek dół {pop1} mm");
+                    Console.WriteLine($"Popychacz - Zamek góra {pop1} mm");
+                    Console.WriteLine($"Popychacz - skrzydło góra {pop3} mm");
+
+                    if (x>1250)
+                    {
+                        int pop5 = x / 2;
+                        Console.WriteLine($"Popychacz - skrzydło dół {pop5} mm");
+                        Console.WriteLine("Narożnik MMMV0040-10001_701");
+                    }
+                    if(y>1250)
+                    {
+                        int pop4 = y / 2;
+                        Console.WriteLine($"Popychacz - strona zawiasowa {pop4} mm");
+                        Console.WriteLine("Narożnik MMMV0040-10001_701");
+                    }
+
+                    break;
+                case 2:
+                    klasa = "RC2";
+                    break;
+            }
+            Console.WriteLine($"Wybrałeś okno rozwierno - uchylne o klasie odporności {klasa} i wymiarach {x}x{y}mm.");
         }
         static void roz(int k,int x, int y)
         {
