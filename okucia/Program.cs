@@ -7,6 +7,7 @@ namespace okucia
         static void Main(string[] args)
         {
             int rodzaj = 0;
+            int klasa = 0;
             Console.Clear();
             Console.WriteLine("Program obliczy okucia potrzebne do wykonania pojedyczego skrzydła okiennego o właściwościach zadanych przez użytkownika");
             Console.ReadKey();
@@ -28,24 +29,53 @@ namespace okucia
                 Console.WriteLine("Podaj wysokość skrzydła w mm");
                 wys = int.Parse(Console.ReadLine());
             }
+            while(klasa<1 || klasa>2)
+            {
+                Console.Clear();
+                Console.WriteLine("Podaj klasę okuć");
+                Console.WriteLine("1 - Standard");
+                Console.WriteLine("2 - RC2");
+                klasa = int.Parse(Console.ReadLine());
+            }
+            oblicz(rodzaj, szer, wys, klasa);
+            
             Console.ReadKey();
 
         }
-        static void Uchyl(int x,int y)
+        static void oblicz(int r,int x, int y, int k)
         {
-            //Funkcja dla okna U
+            switch(r)
+            {
+                case 1:
+                    Uchyl(k, x, y);
+                    break;
+                case 2:
+                    ru(k, x, y);
+                    break;
+                case 3:
+                    roz(k, x, y);
+                    break;
+                case 4:
+                    ruch(k, x, y);
+                    break;
+            }
+           
         }
-        static void ru(int x, int y)
+        static void Uchyl(int k,int x,int y)
         {
-            //funkcja dla okna RU
+            Console.WriteLine($"Wybrałeś okno uchylne o klasie odporności {k} i wymiarach {x}x{y}mm.");
         }
-        static void roz(int x, int y)
+        static void ru(int k,int x, int y)
         {
-            //funkcja dla okna r
+            Console.WriteLine($"Wybrałeś okno rozwierno - uchylne o klasie odporności {k} i wymiarach {x}x{y}mm.");
         }
-        static void ruch(int x, int y)
+        static void roz(int k,int x, int y)
         {
-            //funkcja dla ru+r na ruchomym
+            Console.WriteLine($"Wybrałeś okno rozwierne o klasie odporności {k} i wymiarach {x}x{y}mm.");
+        }
+        static void ruch(int k,int x, int y)
+        {
+            Console.WriteLine($"Wybrałeś okno rozwierno - uchylne + rozwierne na słupku ruchomym o klasie odporności {k} i wymiarach {x}x{y}mm.");
         }
     }
 }
