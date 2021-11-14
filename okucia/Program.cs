@@ -77,6 +77,7 @@ namespace okucia
                     pop1 = y / 2 - 195;
                     pop3 = x - 506;
                     Console.WriteLine("Potrzebne elementy:\n");
+                    Console.WriteLine("MMBS0220-52501\t\tZestaw zawiasów");
                     Console.WriteLine("MMGI0090-10001_620\tRyglowanie centralne");
                     Console.WriteLine("MSKK0300-00001_406\tRozwórka");
                     Console.WriteLine("MMMV0040-10001_503\tZestaw narożnika");
@@ -88,7 +89,7 @@ namespace okucia
                     {
                         int pop5 = x / 2;
                         Console.WriteLine($"VL59\t\t\tPopychacz\tskrzydło dół\t{pop5} mm");
-                        Console.WriteLine("MMMV0040-10001_701\tNarożnik z przeniesieniem mapędu");
+                        Console.WriteLine("MMMV0040-10001_701\tNarożnik z przeniesieniem napędu");
                     }
                     if(y>1250)
                     {
