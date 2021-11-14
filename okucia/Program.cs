@@ -18,10 +18,10 @@ namespace okucia
                 Console.WriteLine("1 - Uchylne\n2 - Rozwierne\n3 - Rozwierno - uchylne\n4 - Rozwierno - uchylne + rozwierne ze słupkiem ruchomym");
                 rodzaj = int.Parse(Console.ReadLine());
             }
-            Console.WriteLine("Minimalne wymiary to: 350x450 mm");
+            Console.WriteLine("Minimalne wymiary to: 550x550 mm");
             int szer = 300;
             int wys = 300;
-            while(szer<350 || wys<450)
+            while(szer<550 || wys<550)
             {
                 Console.Clear();
                 Console.WriteLine("Podaj szerokość skrzydła w mm");
@@ -75,24 +75,26 @@ namespace okucia
                 case 1:
                     klasa = "Standard";
                     pop1 = y / 2 - 195;
-                    pop3 = x / 2 - 133;
-                    Console.WriteLine("Potrzebne elementy:");
-                    Console.WriteLine("Ryglowanie centralne\nNarożnik RU\nRozwórka");
-                    Console.WriteLine($"Popychacz - Zamek dół {pop1} mm");
-                    Console.WriteLine($"Popychacz - Zamek góra {pop1} mm");
-                    Console.WriteLine($"Popychacz - skrzydło góra {pop3} mm");
+                    pop3 = x - 506;
+                    Console.WriteLine("Potrzebne elementy:\n");
+                    Console.WriteLine("MMGI0090-10001_620\tRyglowanie centralne");
+                    Console.WriteLine("MSKK0300-00001_406\tRozwórka");
+                    Console.WriteLine("MMMV0040-10001_503\tZestaw narożnika");
+                    Console.WriteLine($"VL59\t\t\tPopychacz\tZamek dół\t{pop1}mm");
+                    Console.WriteLine($"VL59\t\t\tPopychacz\tZamek góra\t{pop1}mm");
+                    Console.WriteLine($"VL59\t\t\tPopychacz\tskrzydło góra\t{pop3}mm");
 
                     if (x>1250)
                     {
                         int pop5 = x / 2;
-                        Console.WriteLine($"Popychacz - skrzydło dół {pop5} mm");
-                        Console.WriteLine("Narożnik MMMV0040-10001_701");
+                        Console.WriteLine($"VL59\t\t\tPopychacz\tskrzydło dół\t{pop5} mm");
+                        Console.WriteLine("MMMV0040-10001_701\tNarożnik z przeniesieniem mapędu");
                     }
                     if(y>1250)
                     {
                         int pop4 = y / 2;
-                        Console.WriteLine($"Popychacz - strona zawiasowa {pop4} mm");
-                        Console.WriteLine("Narożnik MMMV0040-10001_701");
+                        Console.WriteLine($"VL59\t\t\tPopychacz\tstrona zawiasu\t{pop4} mm");
+                        Console.WriteLine("MMMV0040-10001_701\tNarożnik z przeniesieniem napędu");
                     }
 
                     break;
@@ -100,7 +102,7 @@ namespace okucia
                     klasa = "RC2";
                     break;
             }
-            Console.WriteLine($"Wybrałeś okno rozwierno - uchylne o klasie odporności {klasa} i wymiarach {x}x{y}mm.");
+            Console.WriteLine($"\nWybrałeś okno rozwierno - uchylne o klasie odporności {klasa} i wymiarach {x}x{y}mm.");
         }
         static void roz(int k,int x, int y)
         {
