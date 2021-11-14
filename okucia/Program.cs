@@ -6,11 +6,28 @@ namespace okucia
     {
         static void Main(string[] args)
         {
+            int rodzaj = 0;
             Console.Clear();
             Console.WriteLine("Program obliczy okucia potrzebne do wykonania pojedyczego skrzydła okiennego o właściwościach zadanych przez użytkownika");
             Console.ReadKey();
-            Console.WriteLine("Podaj typ skrzydła");
-            Console.WriteLine("1 - Uchylne\n2 - Rozwierne\n3 - Rozwierno - uchylne\n4 - Rozwierno - uchylne + rozwierne ze słupkiem ruchomym");
+            while (rodzaj < 1 || rodzaj > 4)
+            {
+                Console.Clear();
+                Console.WriteLine("Podaj typ skrzydła");
+                Console.WriteLine("1 - Uchylne\n2 - Rozwierne\n3 - Rozwierno - uchylne\n4 - Rozwierno - uchylne + rozwierne ze słupkiem ruchomym");
+                rodzaj = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine("Minimalne wymiary to: 350x350 mm");
+            int szer = 300;
+            int wys = 300;
+            while(szer<350 && wys<350)
+            {
+                Console.Clear();
+                Console.WriteLine("Podaj szerokość skrzydła w mm");
+                szer = int.Parse(Console.ReadLine());
+                Console.WriteLine("Podaj wysokość skrzydła w mm");
+                wys = int.Parse(Console.ReadLine());
+            }
             Console.ReadKey();
 
         }
