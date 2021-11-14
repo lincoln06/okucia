@@ -68,7 +68,10 @@ namespace okucia
         static void ru(int k,int x, int y)
         {
             float pop1 = 0;
+            float pop2 = 0;
             float pop3 = 0;
+            float pop4 = 0;
+            float pop5 = 0;
             string klasa = "";
             switch(k)
             {
@@ -87,20 +90,48 @@ namespace okucia
 
                     if (x>1250)
                     {
-                        int pop5 = x / 2;
+                        pop5 = x / 2;
                         Console.WriteLine($"VL59\t\t\tPopychacz\tskrzydło dół\t{pop5} mm");
                         Console.WriteLine("MMMV0040-10001_701\tNarożnik z przeniesieniem napędu");
                     }
                     if(y>1250)
                     {
-                        int pop4 = y / 2;
+                        pop4 = y / 2;
                         Console.WriteLine($"VL59\t\t\tPopychacz\tstrona zawiasu\t{pop4} mm");
                         Console.WriteLine("MMMV0040-10001_701\tNarożnik z przeniesieniem napędu");
                     }
 
                     break;
                 case 2:
-                    klasa = "RC2";
+                    pop1 = y / 2 - 229;
+                    pop2 = y / 2 - 195;
+                    pop3 = x - 506;
+                    int vr = 0;
+                   
+                    Console.WriteLine("Potrzebne elementy:\n");
+                    Console.WriteLine("MMBS0220-52501\t\tZestaw zawiasów");
+                    Console.WriteLine("MMGI0060-10001_620\tRyglowanie centralne");
+                    Console.WriteLine("MSKK0300-00001_406\tRozwórka");
+                    Console.WriteLine("MMVS0450-10001\t\tZestaw narożnika");
+                    Console.WriteLine($"VL59\t\t\tPopychacz\tZamek dół\t{pop1}mm");
+                    Console.WriteLine($"VL59\t\t\tPopychacz\tZamek góra\t{pop2}mm");
+                    Console.WriteLine($"VL59\t\t\tPopychacz\tskrzydło góra\t{pop3}mm");
+                    if (y <= 1400) vr = 4;
+                    if (y > 1400 && y <= 2000) vr = 6;
+                    if (y > 2000) vr = 8;
+                   
+                    
+                    if (x > 900)
+                    {
+                        vr = vr + 2;
+                        pop5 = x / 2-114;
+                        Console.WriteLine($"VL59\t\t\tPopychacz\tskrzydło dół\t{pop5} mm");
+                        Console.WriteLine("MMMV0040-10001_701\tNarożnik z przeniesieniem napędu");
+                    }
+                        pop4 = y -302;
+                        Console.WriteLine($"VL59\t\t\tPopychacz\tstrona zawiasu\t{pop4} mm");
+                        Console.WriteLine("MMMV0040-10001_701\tNarożnik z przeniesieniem napędu");
+                        Console.WriteLine($"MMVR0050-10001\t\tElement zamykający\t\t {vr} szt.");
                     break;
             }
             Console.WriteLine($"\nWybrałeś okno rozwierno - uchylne o klasie odporności {klasa} i wymiarach {x}x{y}mm.");
