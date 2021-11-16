@@ -18,10 +18,10 @@ namespace okucia
                 Console.WriteLine("1 - Uchylne\n2 - Rozwierne\n3 - Rozwierno - uchylne\n4 - Rozwierno - uchylne + rozwierne ze słupkiem ruchomym");
                 rodzaj = int.Parse(Console.ReadLine());
             }
-            Console.WriteLine("Minimalne wymiary to: 550x550 mm");
+            Console.WriteLine("Minimalne wymiary to: 380x550 mm");
             int szer = 300;
             int wys = 300;
-            while(szer<550 || wys<550)
+            while(szer<380 || wys<550)
             {
                 Console.Clear();
                 Console.WriteLine("Podaj szerokość skrzydła w mm");
@@ -78,7 +78,11 @@ namespace okucia
                 case 1:
                     klasa = "Standard";
                     pop1 = y / 2 - 195;
-                    pop3 = x - 506;
+                     if (x < 550)
+                    {
+                        pop3 = x - 338;
+                    }
+                    else pop3 = x - 506;
                     Console.WriteLine("Potrzebne elementy:\n");
                     Console.WriteLine("MMBS0220-52501\t\tZestaw zawiasów");
                     Console.WriteLine("MMGI0090-10001\t\tRyglowanie centralne");
@@ -105,7 +109,11 @@ namespace okucia
                 case 2:
                     pop1 = y / 2 - 229;
                     pop2 = y / 2 - 195;
-                    pop3 = x - 506;
+                    if (x < 550)
+                    {
+                        pop3 = x - 338;
+                    }
+                    else pop3 = x - 506;
                     int vr = 0;
                     int cn = 0;
                    
